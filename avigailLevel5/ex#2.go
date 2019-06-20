@@ -2,45 +2,35 @@ package main
 
 import "fmt"
 
-type person struct {
+type person2 struct {
 	firstName       string
 	lastName        string
 	iceCreamFlavors []string
 }
 
 func main() {
-	p1 := person{
-		firstName: "6525",
-		lastName:  "last name 1",
+	p1 := person2{
+		firstName:       "6525",
+		lastName:        "last name 1",
 		iceCreamFlavors: []string{"asas", "asas"},
 	}
-	p2 := person{
-		firstName: "5656",
-		lastName:  "bbb",
+	p2 := person2{
+		firstName:       "5656",
+		lastName:        "bbb",
 		iceCreamFlavors: []string{"asas", "asas"},
 	}
-	fmt.Println("p1")
-	fmt.Println(p1.firstName)
-	fmt.Println(p1.lastName)
-	for _, v := range p1.iceCreamFlavors {
-		fmt.Println(v)
+	m := map[string]person2{
+		p1.lastName: p1,
+		p2.lastName: p2,
 	}
-	fmt.Println("p2")
-	fmt.Println(p2.firstName)
-	fmt.Println(p2.lastName)
-	for _, v := range p2.iceCreamFlavors {
-		fmt.Println(v)
-	}
-
-	all := []person{p1, p2}
-	for i, p := range all {
-		fmt.Println("p", i)
-		fmt.Println(p.firstName)
-		fmt.Println(p.lastName)
+	for _, v := range m {
+		fmt.Println(v.firstName)
+		fmt.Println(v.lastName)
 		fmt.Print("iceCreamFlavors: ")
-		for _, v := range p.iceCreamFlavors {
-			fmt.Print(v, ", ")
+		for _, fla := range v.iceCreamFlavors {
+			fmt.Print(fla, ", ")
 		}
 		fmt.Println()
 	}
+
 }
